@@ -25,6 +25,7 @@ services:
     depends_on:
       - postgres
     environment:
+      PYTHONPATH: /app
       MENGKE_APP_ENV: production
       MENGKE_DEBUG: "false"
       MENGKE_AUTH_ENABLED: "true"
